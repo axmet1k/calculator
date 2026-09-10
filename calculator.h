@@ -18,7 +18,7 @@ public:
     ~Calculator();
 
 private slots: //секуия для слотов
-    //void onEqualsClicked(); //слот для кнопки
+    void onEqualsClicked(); //слот для кнопки
 
 private: //приватные поля класса
     QLineEdit *input1; //первое поле ввода
