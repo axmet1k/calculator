@@ -35,7 +35,6 @@ Calculator::Calculator(QWidget *parent) //конструктор
     //задание высоты
     input1->setFixedHeight(HEIGHT);
     input2->setFixedHeight(HEIGHT);
-    equalsButton->setFixedHeight(HEIGHT);
     equalsButton->setFixedSize(HEIGHT*2,HEIGHT);
 
     //раскладка
