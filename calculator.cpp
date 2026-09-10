@@ -5,13 +5,16 @@
 #include <QWidget>         // базовый виджет
 #include <QMessageBox>     // для сообщений об ошибках
 
+//==== Глобальные переменные ====
+#define HEIGHT 60
+
 //==== Конструктор ====
 Calculator::Calculator(QWidget *parent) //конструктор
     : QMainWindow(parent) //вызывает конструктор родителя
 {
     // настройка окна
     this->setWindowTitle("Сложение чисел");
-    this->resize(600, 200);
+    this->resize(600, 170);
 
     //центральный виджет для layuot
     QWidget *central = new QWidget(this);
@@ -26,8 +29,14 @@ Calculator::Calculator(QWidget *parent) //конструктор
 
     equalsButton = new QPushButton("=", this);
 
-    resultLabel = new QLabel("Результат", this);
+    resultLabel = new QLabel("Тут будет результат", this);
     resultLabel->setAlignment(Qt::AlignCenter);
+
+    //задание высоты
+    input1->setFixedHeight(HEIGHT);
+    input2->setFixedHeight(HEIGHT);
+    equalsButton->setFixedHeight(HEIGHT);
+    equalsButton->setFixedSize(HEIGHT*2,HEIGHT);
 
     //раскладка
     QVBoxLayout *mainLayout = new QVBoxLayout(central);
