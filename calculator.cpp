@@ -42,13 +42,37 @@ Calculator::Calculator(QWidget *parent) //конструктор
     mainLayout->addWidget(resultLabel);
 
     //
-    //connect(equalsButton, &QPushButton::clicked,
-    //        this, &Calculator::onEqualsClicked());
+    connect(equalsButton, &QPushButton::clicked,this, &Calculator::onEqualsClicked);
 }
 
 //деструктор
 Calculator::~Calculator()
 {
+
+}
+
+//==== Пользовательские функции ====
+//слот для кнопки = и проверка ввода данных
+void Calculator::onEqualsClicked(){
+    //проверяем на пустоту полей
+    if (input1->text().isEmpty() || input2->text().isEmpty()){
+        QMessageBox::warning(this, "Ошибка!", "Заполните оба поля");
+        return;
+    }
+
+    //преобразуем текст в числа
+    bool ok1, ok2;
+    double num1 = input1->text().toDouble(&ok1);
+    double num2 = input2->text().toDouble(&ok2);
+
+    //проверка что это числа
+    if (!ok1 || !ok2){
+        QMessageBox::warning(this,"Ошибка","Введите корректные числа");
+        return ;
+    }
+    //складываем
+    double sum = num1 + num2;
+    resultLabel->setText("Результат: " + QString::number(sum));
 
 }
 
